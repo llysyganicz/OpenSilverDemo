@@ -1,0 +1,27 @@
+﻿<ChildWindow x:Class="OpenSilverDemo.Views.EditWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           Width="400" Height="300" 
+           Title="{Binding Path=WindowTitle}"
+           DataContext="{Binding Source={StaticResource Locator}, Path=EditViewModel}">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Title:"/>
+        <TextBox Grid.Row="1" Text="{Binding Path=Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Grid.Row="2" Text="Content:"/>
+        <TextBox Grid.Row="3" Text="{Binding Path=Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True"/>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Cancel" Command="{Binding Path=Cancel}"/>
+            <Button Content="OK" Command="{Binding Path=Save}"/>
+        </StackPanel>
+    </Grid>
+</ChildWindow>
